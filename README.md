@@ -291,7 +291,7 @@ Data Coding Value | Description
   "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
   }
 }
-
+```
 Location Based Services
 ========================
 
