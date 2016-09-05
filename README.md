@@ -326,7 +326,7 @@ sample of expected format of multi-part content below:
       "inboundSMSMessage":[
          {
             "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
-            "destinationAddress":"tel:21583822",
+            "destinationAddress":"tel:21581234",
             "messageId":"57cd07d61a28d80100a26bc7",
             "message":"AlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrigh",
             "resourceURL":null,
@@ -346,7 +346,7 @@ sample of expected format of multi-part content below:
       "inboundSMSMessage":[
          {
             "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
-            "destinationAddress":"tel:21583822",
+            "destinationAddress":"tel:21581234",
             "messageId":"57cd07dab9d3660100cee8d2",
             "message":"tAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightu",
             "resourceURL":null,
