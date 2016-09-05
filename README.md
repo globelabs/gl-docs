@@ -239,7 +239,6 @@ In receiving SMS, globe will send a data to your Notify URL (that you provided w
 
 In your Notify URL, create a script that will catch and save these data to a file or to the database.
 
-
 ###Binary SMS
 
 Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
@@ -267,9 +266,6 @@ Data Coding Value | Description
 4                 | Binary (8-bit)
 8                 | UCS2 (Unicode)
 
-
-### Response
-
 ```json
 {
   "outboundBinaryMessageRequest": {
@@ -292,6 +288,12 @@ Data Coding Value | Description
   }
 }
 ```
+
+###Multi-Part SMS
+
+**Sending Multi-Part SMS**
+
+
 Location Based Services
 ========================
 
@@ -406,7 +408,7 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/amount?access_token={acc
 curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPcQDdTESLUDI4s4g" \
  -F "amount=0.00" \
  -F "description=my application" \
- -F "endUserId=9175595283" \
+ -F "endUserId=9171234567" \
  -F "referenceCode=53151000022" \
  -F "transactionOperationStatus=Charged"
  ```
@@ -427,7 +429,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 {
  "amountTransaction":
  {
-   "endUserId": "9175595283",
+   "endUserId": "9171234567",
    "paymentAmount": 
    {
      "chargingInformation": 
