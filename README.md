@@ -542,11 +542,20 @@ you can make a <span class="method">GET</span> request to this uri below:
 https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 ```
 
-|Parameter|
-|---------|
-|app_id|
-|app_secret|
+|Parameter|Usage|
+|---------|-----|
+|app_id|required|
+|app_secret|required|
 
+###### Sample Response
+
+```
+{
+  "referenceCode": "12341000005",
+  "status": "SUCCESS",
+  "shortcode": "21581234"
+}
+```
 
 
 
