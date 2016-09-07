@@ -517,6 +517,8 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 }
 ```
 
+
+
 ###### Error Codes:
 
 |Code|Description|
@@ -530,6 +532,23 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |412 | TM Subscriber has insufficient balance.|
 |416 |Failure to check the subscriber's balance.|
 |503 | System is busy, please try again later.|
+
+
+### Get Last Reference Code
+In case you lost of track of your reference code,
+you can make a <span class="method">GET</span> request to this uri below:
+
+```
+https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
+```
+
+|Parameter|
+|---------|
+|app_id|
+|app_secret|
+
+
+
 
 Voice
 ========================
