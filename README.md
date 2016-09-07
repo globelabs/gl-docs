@@ -298,7 +298,7 @@ Data Coding Value | Description
 
 **Sending Multi-Part SMS**
 
-You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged .50 per 160 characters. No need to cut content for long messages, you can send them as is.
+You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters. No need to cut content for long messages, you can send them as is.
 
 ###### Sample POST Request
 
