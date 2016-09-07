@@ -130,9 +130,10 @@ and what is returned by the server is a representation of that resource dependin
 HTTP POST, GET and DELETE commands are used in OneAPI SMS. The URIs of the resources are:
 
 
-### Sending SMS
+### Sending SMS (SMS-MT)
 
 Send an SMS message to one or more mobile terminals:
+(Mobile Terminating - Application to Subscriber)
 
 Use <span class="method">POST</span> method on this URI:
 ```
@@ -213,9 +214,11 @@ curl -X POST
 __Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS (beta) API. 
 
 
-### Receiving SMS
+### Receiving SMS (SMS-MO)
 
 In receiving SMS, globe will send a data to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
+(Mobile Originating - Subscriber to Application)
+
 
 ```javascript
 {
@@ -556,8 +559,6 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
   "shortcode": "21581234"
 }
 ```
-
-
 
 Voice
 ========================
