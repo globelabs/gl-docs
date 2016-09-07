@@ -133,6 +133,7 @@ HTTP POST, GET and DELETE commands are used in OneAPI SMS. The URIs of the resou
 ### Sending SMS (SMS-MT)
 
 Send an SMS message to one or more mobile terminals:
+
 (Mobile Terminating - Application to Subscriber)
 
 Use <span class="method">POST</span> method on this URI:
@@ -217,6 +218,7 @@ __Note:__ Response parameters deliveryInfo, callbackData, senderName are optiona
 ### Receiving SMS (SMS-MO)
 
 In receiving SMS, globe will send a data to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
+
 (Mobile Originating - Subscriber to Application)
 
 
