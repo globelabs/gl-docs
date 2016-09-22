@@ -375,7 +375,7 @@ Batch of messages could be identified if they have the same `multipartRefId`.
 |----|-----------|
 |201|Request has been successful|
 |400/401|Request failed. Wrong or missing parameters|
-|502/503|Platform Error. API Service is Down|
+|502/503|Platform Error. API Service is busy or down|
 
 
 Location Based Services
@@ -464,6 +464,16 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 | **longitude** geographic coordinate of the subscriber that specifies the north-south. ||
 | **timestamp** time of event response. | |
 | **locationRetrievalStatus** status of location request. | |
+
+
+###HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters|
+|502/503|Platform Error. API Service is busy or down|
+
 
 Charging
 ========================
@@ -570,6 +580,15 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
   "shortcode": "21581234"
 }
 ```
+
+
+###HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters|
+|502/503|Platform Error. API Service is busy or down|
 
 Voice
 ========================
