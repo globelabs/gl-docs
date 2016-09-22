@@ -369,6 +369,15 @@ sample of expected format of multi-part content below:
 
 Batch of messages could be identified if they have the same `multipartRefId`.
 
+###HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters|
+|502/503|Platform Error. API Service is Down|
+
+
 Location Based Services
 ========================
 
