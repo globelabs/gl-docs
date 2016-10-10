@@ -298,7 +298,8 @@ Data Coding Value | Description
 
 **Sending Multi-Part SMS**
 
-You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters. No need to cut content for long messages, you can send them as is.
+You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters on the first part of the message and 152 characters for the succeeding parts/batch (additional bytes are needed for UDH to link multiple messages as one). 
+
 
 ###### Sample POST Request
 
