@@ -298,7 +298,7 @@ Data Coding Value | Description
 
 **Sending Multi-Part SMS**
 
-You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters on the first part of the message and 152 characters for the succeeding parts/batch (additional bytes are needed for UDH to link multiple messages as one). 
+You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters. 
 
 
 ###### Sample POST Request
@@ -515,7 +515,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |**amount** (decimal) amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
 |**description**(string) is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
 | **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. OneAPI also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
-| **referenceCode** (string, unique per charge event) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: SUFFIX + Increment of 1 from 1000000 e.g. 29431,000,002 9,999,999 For your 1st transaction ref #:29431000001| Required |
+| **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Unique alphanumeric string. or you can also do Increments of 1 from 1000000 e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 |**transactionOperationStatus** (enumeration). This indicates the desired resource state, in this case ‘Charged’. See ‘resource states’ section below for further explanation| Required |
 
 ###### Sample Response
