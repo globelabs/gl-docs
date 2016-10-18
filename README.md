@@ -111,7 +111,7 @@ SMS
 **Overview**
 
 Short Message Service (SMS) enables your application or service to send and
-receive secure, targeted text messages and alerts to your Globe / TM subscribers.
+receive secure, targeted text messages and alerts to your Globe / TM and other telco subscribers.
 
 These interfaces are  RESTful interfaces based on [OneAPI GSMA SMS v3 (RESTFul
 NETAPI)](https://www.google.com/url?q=http://www.gsma.com/oneapi/sms-restful-netapi&sa=D&ust=1462235837323000&usg=AFQjCNHI9JQdV1z2-ahEM1NPMmmfRdb6jQ).
