@@ -54,7 +54,7 @@ After creation, your app will have its own **Short Code**.
     
     **Welcome Message** - welcome message mentioned in the Create App Section.
 
-3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be posted (POST) to your **Redirect URI**.
+3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be posted (POST) to your **Redirect URI**, you can get these parameters via GET method.
 
 ###### Sample POST to Redirect URI
 
@@ -169,9 +169,9 @@ curl -X POST
 "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/1234/requests?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPgQDdTESLXDIes4g" -H "Content-Type: application/json" -d
 {"outboundSMSMessageRequest": {
    "clientCorrelator": "123456",
-   "senderAddress": "tel:1234",
+   "senderAddress": "1234",
    "outboundSMSTextMessage": {"message": "Hello World"},
-   "address": ["tel:+639171234567"]
+   "address": "9171234567"
  }
 }
 ```
@@ -308,9 +308,9 @@ curl -X POST
 "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/1234/requests?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPgQDdTESLXDIes4g" -H "Content-Type: application/json" -d
 {"outboundSMSMessageRequest": {
    "clientCorrelator": "123456",
-   "senderAddress": "tel:1234",
+   "senderAddress": "1234",
    "outboundSMSTextMessage": {"message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis commodo posuere dui vitae feugiat. Cras vehicula, elit eget commodo tristique, mi magna placerat turpis, quis ultrices massa odio vitae sapien. Proin elit diam, malesuada sit amet blandit id, fermentum eu orci."},
-   "address": ["tel:+639171234567"]
+   "address": "9171234567"]
  }
 }
 ```
