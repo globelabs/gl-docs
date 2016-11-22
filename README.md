@@ -515,7 +515,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |**amount** (decimal) amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
 |**description**(string) is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
 | **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. OneAPI also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
-| **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Unique alphanumeric string. or you can also do Increments of 1 from 1000000 e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
+| **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Unique combination of 7 alphanumeric string. or you can also do Increments of 1 from 1000000 e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 |**transactionOperationStatus** (enumeration). This indicates the desired resource state, in this case ‘Charged’. See ‘resource states’ section below for further explanation| Required |
 
 ###### Sample Response
