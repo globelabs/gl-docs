@@ -113,21 +113,16 @@ SMS
 Short Message Service (SMS) enables your application or service to send and
 receive secure, targeted text messages and alerts to your Globe / TM and other telco subscribers.
 
-These interfaces are  RESTful interfaces based on [OneAPI GSMA SMS v3 (RESTFul
-NETAPI)](https://www.google.com/url?q=http://www.gsma.com/oneapi/sms-restful-netapi&sa=D&ust=1462235837323000&usg=AFQjCNHI9JQdV1z2-ahEM1NPMmmfRdb6jQ).
-
 Note: All API calls must include the access_token as one of the
 Universal Resource Identifier (URI) parameters.
 
 ### Resources and URIs
 
-OneAPI SMS may be accessed via a RESTful API.
-
 A RESTful API utilises HTTP commands POST, GET, PUT, and DELETE in order to
 perform an operation on a resource at the server. This resource is addressed by a URI;
 and what is returned by the server is a representation of that resource depending on its current state.
 
-HTTP POST, GET and DELETE commands are used in OneAPI SMS. The URIs of the resources are:
+HTTP POST and GET commonly used  in our services. The URIs of the resources are:
 
 
 ### Sending SMS (SMS-MT)
@@ -143,8 +138,7 @@ https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/{senderAddress}/request
 
 ###### Representation Formats
 
-OneAPI GSMA SMS API (v3) both supports application/json and application/xml content
-types for POST operations. For the Globe Labs API SMS (beta), it is implemented
+For the Globe Labs API SMS (beta), it is implemented
 using application/json.
 
 ###### Resource Parameters
@@ -385,7 +379,7 @@ Location Based Services
 **Overview**
 
 This API allows a web application to query the location of one or more mobile devices that are connected to a mobile operator network.
-The Globe Labs LBS is a RESTful interface based on OneAPI GSMA Location API v3 (RESTFul NETAPI).
+The Globe Labs LBS is a RESTful interface.
 
 Note: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
 
@@ -393,11 +387,9 @@ Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8) .
 
 ###Resources and URIs
 
-OneAPI LBS may be accessed via a RESTful API.
-
 A RESTful API utilises HTTP commands GET in order to perform an operation on a resource at the server. This resource is addressed by a URI; and what is returned by the server is a representation of that resource depending on its current state.
 
-HTTP GET  commands is  used in OneAPI GSMA  LBS. The URIs of the resources are:
+HTTP GET commnand is used in these resources below:
 
 ### LBS Query
 
@@ -410,7 +402,7 @@ https://devapi.globelabs.com.ph/location/v1/queries/location?access_token={acces
 
 ###### Representation Formats
 
-OneAPI GSMA LBS API (v3) both supports application/json and application/xml content types for GET operations. For the Globe Labs API LBS (beta), it is implemented using application/json.
+For the Globe Labs API LBS (beta), it is implemented using application/json.
 
 ###### Resource Parameters
 
@@ -483,11 +475,10 @@ Charging
 
 The Charging API directly charges for digital services to the bill of an Globe or TM subscriber. A developer creates new transactions or subscriptions, requests the status of the transaction or subscription, and authorizes refunds.
 
-These interfaces are  RESTful interfaces based on OneAPI GSMA Charging v1 (RESTFul API).
 
 ######CHARGING v2.1
 
-The OneAPI Payment interface allows you to charge mobile subscribers for use of your Web application or content. The API allows you to directly charge a user based on their consent (see ‘User consent and operator policies’ below).
+The API Payment interface allows you to charge mobile subscribers for use of your Web application or content. The API allows you to directly charge a user based on their consent (see ‘User consent and operator policies’ below).
 
 ### Charge Subscriber
 
@@ -514,7 +505,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 | ----------|-------|
 |**amount** (decimal) amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
 |**description**(string) is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
-| **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. OneAPI also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
+| **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
 | **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Unique combination of 7 alphanumeric string. or you can also do Increments of 1 from 1000000 e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 |**transactionOperationStatus** (enumeration). This indicates the desired resource state, in this case ‘Charged’. See ‘resource states’ section below for further explanation| Required |
 
