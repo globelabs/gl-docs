@@ -369,7 +369,7 @@ Batch of messages could be identified if they have the same `multipartRefId`.
 |Code|Description|
 |----|-----------|
 |201|Request has been successful|
-|400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token. Note: This is a chargaable request against your developer wallet or bill. |
+|400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token. Note: This is a chargeable request against your developer wallet or bill. Rate to be charge is same as a successful request. |
 |502/503|Platform Error. API Service is busy or down|
 
 
@@ -464,7 +464,7 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 |Code|Description|
 |----|-----------|
 |201|Request has been successful|
-|400/401|Request failed. Wrong or missing parameters|
+|400/401|Request failed. Wrong or missing parameters. Note: This is a chargeable request against your developer wallet or bill. Rate to be charge is same as a successful request.|
 |502/503|Platform Error. API Service is busy or down|
 
 
