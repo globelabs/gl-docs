@@ -364,7 +364,7 @@ sample of expected format of multi-part content below:
 
 Batch of messages could be identified if they have the same `multipartRefId`.
 
-###HTTP Response
+###SMS API HTTP Response
 
 |Code|Description|
 |----|-----------|
@@ -461,7 +461,7 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 | **locationRetrievalStatus** status of location request. | |
 
 
-###HTTP Response
+###LBS API HTTP Response
 
 |Code|Description|
 |----|-----------|
@@ -578,7 +578,7 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 ```
 
 
-###HTTP Response
+###Charging API HTTP Response
 
 |Code|Description|
 |----|-----------|
@@ -642,7 +642,7 @@ http://bit.ly/VoiceAPIDocs_v2
 
 https://www.tropo.com/docs
 
-Subscriber Data Query
+Subscriber Data Query (Alpha)
 ========================
 
 **Overview**
