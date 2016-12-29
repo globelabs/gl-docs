@@ -372,7 +372,7 @@ Batch of messages could be identified if they have the same `multipartRefId`.
 |400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token. |
 |502/503|Platform Error. API Service is busy or down|
 
-API requests with a response code of 201, 400 or 401 will be chargeable and will be deducted to your developer wallet or bill. Standard SMS API rates apply, unless otherwise stated.
+API requests with a response code of 201, 400 or 401 will be chargeable against your developer wallet. Standard SMS API rates apply, unless otherwise stated.
 
 
 Location Based Services
@@ -469,7 +469,7 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 |400/401|Request failed. Wrong or missing parameters.|
 |502/503|Platform Error. API Service is busy or down|
 
-API requests with a response code of 201, 400 or 401 will be chargeable and will be deducted to your developer wallet or bill. Standard LBS API rates apply, unless otherwise stated.
+API requests with a response code of 201, 400 or 401 will be chargeable against your developer wallet. Standard LBS API rates apply, unless otherwise stated.
 
 
 Charging
