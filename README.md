@@ -369,7 +369,7 @@ Batch of messages could be identified if they have the same `multipartRefId`.
 |Code|Description|
 |----|-----------|
 |201|Request has been successful|
-|400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token|
+|400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token. Note: This is a chargaable request against your developer wallet or bill. |
 |502/503|Platform Error. API Service is busy or down|
 
 
