@@ -29,7 +29,7 @@ In order to create an app, user must fill out a minimum of required fields which
 
   **Access Token**: required to use the API.
 
-  **Note**: The Redirect URI must be on a domain or on a web server, for example; **www.example.com/your_code.php** .
+  **Note**: The Redirect URI must be on a domain or on a web server, for example; **http://www.example.com/your_code.php** .
 
 
 - API Type - Upon selection of the API type, there are certain API's that may require new fields:
@@ -211,7 +211,7 @@ __Note:__ Response parameters deliveryInfo, callbackData, senderName are optiona
 
 ### Receiving SMS (SMS-MO)
 
-In receiving SMS, globe will send a data to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
+In receiving SMS, globe will send a data(POST) to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
 
 (Mobile Originating - Subscriber to Application)
 
