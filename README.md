@@ -54,7 +54,7 @@ After creation, your app will have its own **Short Code**.
     
     **Welcome Message** - welcome message mentioned in the Create App Section.
 
-3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be posted (POST) to your **Redirect URI**, you can get these parameters via GET method.
+3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be sent to your **Redirect URI**, you can get these parameters via GET method.
 
 ###### Sample POST to Redirect URI
 
