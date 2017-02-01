@@ -91,7 +91,7 @@ After creation, your app will have its own **Short Code**.
 
 ### Stop Subscription
 
-If ever a subscriber chooses to opt-out or unsubscribe to your application. They will need to text in STOP to your shortcode ('STOPSVC' for cross-telco). After stopping the subscription, a json data will be passed to your redirect_uri informing you that a subscriber had just unsubscribed to your service.
+If ever a subscriber chooses to opt-out or unsubscribe to your application. They will need to text in STOP to your shortcode ('STOPSVC' for cross-telco). After stopping the subscription, a json data will be passed to your redirect_uri (POST) informing you that a subscriber had just unsubscribed to your service.
 
 json format:
 
