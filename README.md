@@ -76,7 +76,7 @@ After creation, your app will have its own **Short Code**.
 
 4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
 
-5.  The page will then be redirected to the redirect uri of the application, and a **Code** parameter will be passed to it.
+5.  The page will then be redirected to the redirect_uri of your application, and a **Code** parameter will be passed(via GET) to it.
 
 6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as the parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
 
