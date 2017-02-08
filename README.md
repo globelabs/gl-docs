@@ -72,9 +72,9 @@ After creation, your app will have its own **Short Code**.
 
 2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
 
-3.  The page will be redirected, and an SMS with confirmation code will be sent to the subscriber.
+3.  The page will be redirected, and an SMS with confirmation pin will be sent to the subscriber.
 
-4.  The subscriber needs to key-in on the page the received confirmation code and click the button Confirm to authorize the subscriber.
+4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
 
 5.  The page will then be redirected to the redirect uri of the application, and a **Code** parameter will be passed to it.
 
