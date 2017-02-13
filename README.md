@@ -226,7 +226,7 @@ In receiving SMS, globe will send a data(POST) to your Notify URL (that you prov
             "messageId":null,
             "message":"Hello",
             "resourceURL":null,
-            "senderAddress":"9171234567"
+            "senderAddress":"tel:+639171234567"
          }
        ],
        "numberOfMessagesInThisBatch":1,
