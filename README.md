@@ -207,7 +207,7 @@ curl -X POST
 | **notifyURL** App call back URL defined at the App Info. | Optional |
 
 __Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS (beta) API. 
-
+Error response with 400 series will deduct 0.50 from your wallet balance.
 
 ### Receiving SMS (SMS-MO)
 
@@ -383,7 +383,7 @@ Location Based Services
 This API allows a web application to query the location of one or more mobile devices that are connected to a mobile operator network.
 The Globe Labs LBS is a RESTful interface.
 
-Note: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
+__Note__: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
 
 Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8) .
 
@@ -585,6 +585,8 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 |201|Request has been successful|
 |400/401|Request failed. Wrong or missing parameters|
 |502/503|Platform Error. API Service is busy or down|
+
+__Note__: Error response with 400 series will deduct 0.50 from your wallet balance
 
 Voice
 ========================
