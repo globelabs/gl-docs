@@ -627,6 +627,9 @@ http://bit.ly/VoiceAPIDocs_v2
 
 https://www.tropo.com/docs
 
+call trigger endpoint:
+https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
+
 ### Web API
 
 Web API :  A web-service API that lets you build communications applications that run on your servers and drive the Tropo cloud using JSON over HTTP. It uses the same request-response model many web developers are already comfortable using, communicating with applications running on your own server, feeding requests and processing responses back and forth as needed. Requires to import or include code library.
@@ -645,4 +648,5 @@ http://bit.ly/VoiceAPIDocs_v2
 
 https://www.tropo.com/docs
 
-
+call trigger endpoint:
+https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
