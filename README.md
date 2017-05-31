@@ -628,7 +628,8 @@ http://bit.ly/VoiceAPIDocs_v2
 https://www.tropo.com/docs
 
 call trigger endpoint:
-https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
+
+GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
 
 ### Web API
 
