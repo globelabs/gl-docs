@@ -29,9 +29,6 @@ In order to create an app, user must fill out a minimum of required fields which
 
   **Access Token**: required to use the API.
 
-  **Note**: The Redirect URI must be on a domain or on a web server, for example; **http://www.example.com/your_code.php** .
-
-
 - API Type - Upon selection of the API type, there are certain API's that may require new fields:
   
   **SMS**
@@ -41,6 +38,11 @@ In order to create an app, user must fill out a minimum of required fields which
   **Voice**
 
   - Voice URI - Either in Scripting or WEB API; this contains your code/commands to be accessed.
+
+
+
+  **Note**: The Redirect URI must be on a domain or on a web server, for example; **http://www.example.com/your_code.php** .
+  The platforms expects a 200 response code from the developer's Redirect URI and Notify URI to be valid.
 
 After creation, your app will have its own **Short Code**.
 
