@@ -481,7 +481,7 @@ Charging
 
 The Charging API directly charges for digital services to the bill of an Globe or TM subscriber. A developer creates new transactions or subscriptions, requests the status of the transaction or subscription, and authorizes refunds.
 
-NOTE: Starting May 1, 2017, postpaid subscribers are only allowed to be charged 3,000 per month. 
+NOTE: Charging post-paid subscribers are temporarily suspended. 
 
 ######CHARGING v2.1
 
