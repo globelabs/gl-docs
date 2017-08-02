@@ -41,7 +41,7 @@ In order to create an app, user must fill out a minimum of required fields which
 
 
 
-  **Note**: The Redirect URI must be on a domain or on a web server, for example; **http://www.example.com/your_code.php** .
+  **Note**: The Redirect URI must be on a publicly accessible domain or on a web server, for example; **http://www.example.com/your_code.php** .
   The platforms expects a 200 response code from the developer's Redirect URI and Notify URI to be valid.
 
 After creation, your app will have its own **Short Code**.
