@@ -555,7 +555,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |412 | TM Subscriber has insufficient balance.|
 |416 |Failure to check the subscriber's balance.|
 |503 | System is busy, please try again later.|
-
+|701 | Charging is disallowed for the subscriber. Do not retry. Inform the subscriber to call the hotline for activation.|
 
 ### Get Last Reference Code
 In case you lost of track of your reference code,
