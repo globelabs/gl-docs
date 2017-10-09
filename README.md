@@ -546,6 +546,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 
 |Code|Description|
 |----|-----------|
+|201 | Charging Successful.|
 |400 | Authentication Error/Missing parameters in request body.|
 |401 | App Is deactivated (due to inactivity).|
 |402 | Subscriber Not found (invalid number). |
@@ -580,16 +581,7 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 }
 ```
 
-
-###Charging API HTTP Response
-
-|Code|Description|
-|----|-----------|
-|201|Request has been successful|
-|400/401|Request failed. Wrong or missing parameters|
-|502/503|Platform Error. API Service is busy or down|
-
-__Note__: Error response with 400 series will deduct 0.50 from your wallet balance
+__Note__: Non 200 and 500 series will deduct 0.50 from your wallet balance
 
 Voice
 ========================
