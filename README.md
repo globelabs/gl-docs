@@ -601,7 +601,7 @@ With the Globe Labs Voice APIs, one can easily:
 
 - and more…
 
-###### You can select the App Type can either be a Scripting or Web API .
+###### You can select between Scripting or Web API .
 
 ### Scripting
 
@@ -611,18 +611,11 @@ You can even use Gist Github or Dropbox to use your code.
 
 Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
 
-**Change Voice URI**
+Read the full documentation at:
 
-Change Voice URI to where your Script is located.
-
-To configure, read the full documentation at:
-
-http://bit.ly/VoiceAPIDocs_v2
-
-https://www.tropo.com/docs
+https://www.tropo.com/docs/scripting/quickstarts
 
 call trigger endpoint:
-
 GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
 
 ### Web API
@@ -633,15 +626,9 @@ Best to use for apps that requires database and other system integration.
 
 Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
 
-**Change Voice URI**
+Read the full documentation at:
 
-Change Voice URI to where your Web API is located.
-
-To configure, read the full documentation at:
-
-http://bit.ly/VoiceAPIDocs_v2
-
-https://www.tropo.com/docs
+https://www.tropo.com/docs/webapi/quickstarts
 
 call trigger endpoint:
 https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
