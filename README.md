@@ -633,4 +633,4 @@ https://www.tropo.com/docs/webapi/quickstarts
 
 call trigger endpoint:
 
-https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
+GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
