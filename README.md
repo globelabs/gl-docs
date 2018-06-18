@@ -642,7 +642,7 @@ USSD
 
 The USSD API allows users to access your products or services free of charge by accessing the dial menu through a dedicated number.
 
-### Sending Network Initiated USSD Message
+### Sending Network Initiated USSD Message (USSD-NI)
 
 Use <span class="method">POST</span> method on this URI:
 ```
@@ -820,7 +820,7 @@ This will start the USSD session and send ``{"message":`null`, sessionStart: tru
 Alternatively, you can send a sequence of inputs upon starting the USSD session by dialing ``*120*{shortcode}*{input 1}*{input 2}*{input 3}#``.
 For example, dialing ``*120*9996*1*2*3#`` and pressing <span class="method">CALL</span> will start the USSD session and automatically send ``{"message":`['1', '2', '3']`, sessionStart: true}`` to your USSD Notify URL
 
-### Request and Response Errors
+### Error Codes
 
 | Status Code | Error Message |
 |-------------|---------------|
