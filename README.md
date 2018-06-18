@@ -634,3 +634,203 @@ https://www.tropo.com/docs/webapi/quickstarts
 call trigger endpoint:
 
 GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
+
+USSD
+=====================
+
+**Overview**
+
+The USSD API allows users to access your products or services free of charge by accessing the dial menu through a dedicated number.
+
+### Sending Network Initiated USSD Message
+
+Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/ussd/v1/outbound/{shortcode}/send/requests?access_token={access_token}
+```
+
+###### Resource Parameters
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **shortcode** This is the last 4 digits of the app's shortcode | Required |
+| _string_ **access_token** This contains security information for transacting with a subscriber. The subscriber needs to grant an app first via SMS or Web Form Subscriber Consent Workflow | Required |
+
+###### Representation Format
+
+For the Globe Labs USSD API, the expected format is ```application/json```
+
+###### Sample Post Request (USSD-NI)
+
+```json
+curl -X POST
+"https://devapi.globelabs.com.ph/ussd/v1/outbound/9996/send/requests?access_token=LsQwuHog3n_OwlYSjj4QFujb451HeqCPyaAdkKgRAkM" -H "Content-type: application/json" -d
+{
+    "outboundUSSDMessageRequest": {
+        "outboundUSSDMessage": {
+            "message": "Simple USSD Message\nOption - 1\nOption - 2"
+        },
+        "address": "639171111111",
+        "senderAddress": "21589996",
+        "flash": false
+    }
+}
+```
+
+###### Request Body or Payload Parameters
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **outboundUSSDMessage.message** This is the message to be sent and displayed on the subscriber's mobile phone | Required |
+| _string_ **address** This is the subscriber's mobile number | Required |
+| _string_ **senderAddress** This is the shortcode of the app | Required |
+| _boolean_ **flash** This indicates whether this is the final message or not | Required |
+
+###### Sample Successful POST Response (USSD-NI)
+
+```json
+{
+  "outboundUSSDMessageRequest": {
+    "address": "639171111111",
+    "deliveryInfoList": {
+      "deliveryInfo": [],
+      "resourceURL": "https://devapi.globelabs.com.ph/ussd/v1/outbound/21589996/reply/requests?access_token=access_token"
+    },
+    "senderAddress": "21589996",
+    "outboundUSSDMessage": {
+      "message": "Simple USSD Message\nOption - 1\nOption - 2"
+    },
+    "receiptRequest": {
+      "ussdNotifyURL": "http://example.com/notify",
+      "sessionID": "012345678912"
+    },
+    "resourceURL": "https://devapi.globelabs.com.ph/ussd/v1/outbound/21589996/reply/requests?access_token=access_token"
+  }
+}
+```
+###### Response Parameters
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **address** This is the subscriber's mobile number | |
+| _string_ **resourceURL** This is the API endpoint. This specifies the URI that provides network delivery status of the sent message. | |
+| _string_ **senderAddress** This is the shortcode of the app | |
+| _string_ **outboundUSSDMessage.message** This is the message to be sent and displayed on the subscriber's mobile phone | |
+| _string_ **ussdNotifyURL** This is the URI where the USSD responses will be sent | |
+| _string_ **sessionID** This is the unique identifier for the ongoing USSD session | |
+
+### Sending USSD Reply Message (USSD-MT)
+
+Use <span class="method">POST</span> method on this URI:
+
+```
+https://devapi.globelabs.com.ph/ussd/v1/outbound/{shortcode}/reply/requests?access_token={access_token}
+```
+
+###### Resource Parameters
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **shortcode** This is the last 4 digits of the app's shortcode | Required |
+| _string_ **access_token** This contains security information for transacting with a subscriber. The subscriber needs to grant an app first via SMS or Web Form Subscriber Consent Workflow | Required |
+
+###### Sample POST Request (USSD-MT)
+
+```json
+curl -X POST
+'https://devapi.globelabs.com.ph/ussd/v1/outbound/9996/reply/requests?access_token=LsQwuHog3n_OwlYSjj4QFujb451HeqCPyaAdkKgRAkM' -H "Content-type: application/json" -d
+{
+    "outboundUSSDMessageRequest": {
+        "outboundUSSDMessage": {
+            "message": "Simple USSD Message\nOption - 1\nOption - 2"
+        },
+        "address": "639171111111",
+        "senderAddress": "21589996",
+        "sessionID": "012345678912",
+        "flash": false
+    }
+}
+```
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **outboundUSSDMessage.message** This is the message to be sent and displayed on the subscriber's mobile phone | Required |
+| _string_ **address** This is the subscriber's mobile number | Required |
+| _string_ **senderAddress** This is the shortcode of the app | Required |
+| _string_ **sessionID** This is the unique identifier for the ongoing USSD session | Required |
+| _boolean_ **flash** This indicates whether this is the final message or not | Required |
+
+###### Successful POST Response (USSD-MT)
+
+```json
+{
+  "outboundUSSDMessageRequest": {
+    "address": "639171111111",
+    "deliveryInfoList": {
+      "deliveryInfo": [],
+      "resourceURL": "https://devapi.globelabs.com.ph/ussd/v1/outbound/21589996/reply/requests?access_token=access_token"
+    },
+    "senderAddress": "21589996",
+    "outboundUSSDMessage": {
+      "message": "Simple USSD Message\nOption - 1\nOption - 2"
+    },
+    "receiptRequest": {
+      "ussdNotifyURL": "http://example.com/notify",
+      "sessionID": "012345678912",
+      "referenceID": "f7b61b82054e4b5e"
+    },
+    "resourceURL": "https://devapi.globelabs.com.ph/ussd/v1/outbound/21589996/reply/requests?access_token=access_token"
+  }
+}
+```
+
+| Parameter | Usage |
+|-----------|----------|
+| _string_ **address** This is the subscriber's mobile number | |
+| _string_ **resourceURL** This is the API endpoint. This specifies the URI that provides network delivery status of the sent message. | |
+| _string_ **outboundUSSDMessage.message** This is the message to be sent and displayed on the subscriber's mobile phone | |
+| _string_ **senderAddress** This is the shortcode of the app | |
+| _string_ **ussdNotifyURL** This is the URI where the USSD responses will be sent | |
+| _string_ **sessionID** This is the unique identifier for the ongoing USSD session | |
+
+###### Sample USSD Callback
+This data will be sent to your USSD Notify URL.
+
+```
+{
+  "inboundUSSDMessageList": {
+    "inboundUSSDMessage":[
+    {
+      "datetime":"Tue May 17 2016 11:10:32 GMT+0000 (UTC)",
+      "destinationAddress":"21589996",
+      "message":"*120*9996*3#",
+      "senderAddress":"639171111111",
+      "sessionID": "012345678912"
+    }
+  ]
+  }
+}
+```
+
+###  User Inititated USSD Message
+
+Dial ``*120*{shortcode}`` and press <span class="method">CALL</span> on your mobile phone. 
+This will start the USSD session and send ``{"message":`null`, sessionStart: true}`` to your USSD Notify URL.
+
+Alternatively, you can send a sequence of inputs upon starting the USSD session by dialing ``*120*{shortcode}*{input 1}*{input 2}*{input 3}#``.
+For example, dialing ``*120*9996*1*2*3#`` and pressing <span class="method">CALL</span> will start the USSD session and automatically send ``{"message":`['1', '2', '3']`, sessionStart: true}`` to your USSD Notify URL
+
+### Request and Response Errors
+
+| Status Code | Error Message |
+|-------------|---------------|
+| 200 | N/A |
+| 400 | Missing parameters |
+| 400 | Excess parameters |
+| 400 | Invalid subscriber number |
+| 401 | Invalid access token |
+| 401 | App is not provisioned for USSD |
+| 403 | Your account is currently blocked. Please contact api@globe.com.ph for reactivation. |
+| 403 | The subscriber is blacklisted |
+| 403 | Insufficient Wallet Balance |
+| 404 | App not found |
