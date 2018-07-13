@@ -240,55 +240,6 @@ In receiving SMS, globe will send a data(POST) to your Notify URL (that you prov
 
 In your Notify URL, create a script that will catch and save these data to a file or to the database.
 
-###Binary SMS
-
-Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
-
-Use <span class="method">POST</span> method on this URI:
-```
-https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}
-```
-#### Parameters
-
-Parameter | Description | Required
-----------|-------------|----------
-`userDataHeader` | UDH of the message | true
-`dataCodingScheme` | data coding of the message | true
-`address` | MSISDN of the recipient | true
-`outboundBinaryMessage.message` | message to be sent | true
-`senderAddress` | shortcode of the app | true
-`access_token` | access token of the subscriber | true
-
-Data Coding Value | Description
-------------------|------------
-0                 | SMSC Default
-1                 | IA5/ASCII
-3                 | Latin 1 (ISO-8859-1)
-4                 | Binary (8-bit)
-8                 | UCS2 (Unicode)
-
-```json
-{
-  "outboundBinaryMessageRequest": {
-    "address": "9171234567",
-    "deliveryInfoList": {
-      "deliveryInfo": [],
-      "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
-    "senderAddress": "21581234",
-    "userDataHeader": "06050423F423F4",
-    "dataCodingScheme": 1,
-    "outboundBinaryMessage": {
-      "message": "samplebinarymessage"
-    },
-    "receiptRequest": {
-      "notifyURL": "http://example.com/notify",
-      "callbackData": null,
-      "senderName": null
-    },
-  "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
-  }
-}
-```
 
 ###Multi-Part SMS
 
@@ -365,6 +316,56 @@ sample of expected format of multi-part content below:
 ```
 
 Batch of messages could be identified if they have the same `multipartRefId`.
+
+###Binary SMS
+
+Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
+
+Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}
+```
+#### Parameters
+
+Parameter | Description | Required
+----------|-------------|----------
+`userDataHeader` | UDH of the message | true
+`dataCodingScheme` | data coding of the message | true
+`address` | MSISDN of the recipient | true
+`outboundBinaryMessage.message` | message to be sent | true
+`senderAddress` | shortcode of the app | true
+`access_token` | access token of the subscriber | true
+
+Data Coding Value | Description
+------------------|------------
+0                 | SMSC Default
+1                 | IA5/ASCII
+3                 | Latin 1 (ISO-8859-1)
+4                 | Binary (8-bit)
+8                 | UCS2 (Unicode)
+
+```json
+{
+  "outboundBinaryMessageRequest": {
+    "address": "9171234567",
+    "deliveryInfoList": {
+      "deliveryInfo": [],
+      "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+    "senderAddress": "21581234",
+    "userDataHeader": "06050423F423F4",
+    "dataCodingScheme": 1,
+    "outboundBinaryMessage": {
+      "message": "samplebinarymessage"
+    },
+    "receiptRequest": {
+      "notifyURL": "http://example.com/notify",
+      "callbackData": null,
+      "senderName": null
+    },
+  "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+  }
+}
+```
 
 ###SMS API HTTP Response
 
