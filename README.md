@@ -140,7 +140,7 @@ https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/{senderAddress}/request
 
 ###### Representation Formats
 
-For the Globe Labs API SMS (beta), it is implemented
+For the Globe Labs API SMS, it is implemented
 using application/json.
 
 ###### Resource Parameters
@@ -208,7 +208,7 @@ curl -X POST
 | **resourceURL** Specifies the URI that provides network delivery status of the sent message. The API Endpoint. | Required |
 | **notifyURL** App call back URL defined at the App Info. | Optional |
 
-__Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS (beta) API. 
+__Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS API. 
 Error response with 400 series will deduct 0.50 from your wallet balance.
 
 ### Receiving SMS (SMS-MO)
@@ -406,7 +406,7 @@ https://devapi.globelabs.com.ph/location/v1/queries/location?access_token={acces
 
 ###### Representation Formats
 
-For the Globe Labs API LBS (beta), it is implemented using application/json.
+For the Globe Labs API LBS, it is implemented using application/json.
 
 ###### Resource Parameters
 
