@@ -58,19 +58,16 @@ After creation, your app will have its own **Short Code**.
 
 3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be sent to your **Redirect URI**, you can get these parameters via GET method.
 
-###### Sample POST to Redirect URI
+###### Sample GET to Redirect URI
 
 ```javascript
-{
-  "access_token":"1ixLbltjWkzwqLMXT-8UF-UQeKRma0hOOWFA6o91oXw",
-  "subscriber_number":"9171234567"
-}
+GET /?access_token=E1enKbxfLBUH7b_1E500G_V16fM-Yxmm1VHAR15Re9I&subscriber_number=9179471234 HTTP/1.1
 ```
 
 ### Opt-in via Webform
 
 1.  Platform redirects your subscribers to this url:
-    - https://developer.globelabs.com.ph/dialog/oauth?app_id=APP_ID_HERE
+    - https://developer.globelabs.com.ph/dialog/oauth/<APP_ID_HERE>
 
 2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
 
@@ -78,17 +75,20 @@ After creation, your app will have its own **Short Code**.
 
 4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
 
-5.  The page will then be redirected to the redirect_uri of your application, and a **Code** parameter will be passed(via GET) to it.
+5.  The page will then be redirected to the redirect_uri of your application, and a **Code** parameter will be passed as a URL query parameter to it.
 
-6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as the parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
-
-###### Sample POST to Redirect URI
+###### Code as URL Parameter
 
 ```javascript
-{
-  "access_token":"1ixLbltjWkzwqLMXT-8UF-UQeKRma0hOOWFA6o91oXw",
-  "subscriber_number":"9171234567"
-}
+http://www.sample-redirect-url.com/?code=bLfXLEL9CM8nReI78kxAI7ra56hrBzrBsyonbkIzepngUdrKKyC5Mp5ahgKLAzF9z76RfA4rjrsaAdqeCBkGrMF4MA6MfK6bkGsB89onSL9ER6sbr5yGCzMa8RfA7TzAbqKTa6EfaE5BzCK7ErMsMK9LpSnobejsxrALxfE9GkzFGEdEaCj6rLXsL578RfdyL9rFkbp49hXxK7pCejpAgUyXnj7Ij4zdbsLpar9hKzkA8IEdneMIpjE45CaXjE7f
+```
+
+6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+
+###### Sample POST to get Access Token
+
+```javascript
+POST -x 'https://developer.globelabs.com.ph/oauth/access_token?app_id=<APP ID>&app_secret=<APP SECRET>&code=<CODE>'
 ```
 
 ### Stop Subscription
