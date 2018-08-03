@@ -67,7 +67,9 @@ GET /?access_token=E1enKbxfLBUH7b_1E500G_V16fM-Yxmm1VHAR15Re9I&subscriber_number
 ### Opt-in via Webform
 
 1.  Platform redirects your subscribers to this url:
-    - https://developer.globelabs.com.ph/dialog/oauth/<APP_ID_HERE>
+    ```javascript
+    https://developer.globelabs.com.ph/dialog/oauth/<APP_ID_HERE>
+    ```
 
 2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
 
@@ -77,14 +79,13 @@ GET /?access_token=E1enKbxfLBUH7b_1E500G_V16fM-Yxmm1VHAR15Re9I&subscriber_number
 
 5.  The page will then be redirected to the redirect_uri of your application, and a **Code** parameter will be passed as a URL query parameter to it.
 
+6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+
 ###### Code as URL Parameter
 
 ```javascript
 http://www.sample-redirect-url.com/?code=bLfXLEL9CM8nReI78kxAI7ra56hrBzrBsyonbkIzepngUdrKKyC5Mp5ahgKLAzF9z76RfA4rjrsaAdqeCBkGrMF4MA6MfK6bkGsB89onSL9ER6sbr5yGCzMa8RfA7TzAbqKTa6EfaE5BzCK7ErMsMK9LpSnobejsxrALxfE9GkzFGEdEaCj6rLXsL578RfdyL9rFkbp49hXxK7pCejpAgUyXnj7Ij4zdbsLpar9hKzkA8IEdneMIpjE45CaXjE7f
 ```
-
-6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
-
 ###### Sample POST to get Access Token
 
 ```javascript
