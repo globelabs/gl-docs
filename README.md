@@ -33,18 +33,20 @@ In order to create an app, user must fill out a minimum of required fields which
   
   **SMS**
 
-  - Notify URI - Everytime your short code receives a message; this link will receive the data in JSON format.
+  - Notify URI - Everytime your short code receives a message, this link will receive the data in JSON format.
 
   **Voice**
 
   - Voice URI - Either in Scripting or WEB API; this contains your code/commands to be accessed.
 
-
-
-  **Note**: The Redirect URI must be on a publicly accessible domain or on a web server, for example; **http://www.example.com/your_code.php** .
-  The platforms expects a 200 response code from the developer's Redirect URI and Notify URI to be valid.
-
 After creation, your app will have its own **Short Code**.
+
+### Redirect and Notify URI
+
+The following are the minimum expectations for your app's Redirect and Notify URI:
+
+1. Your URIs must be either a publicly accessible domain or web server i.e. no SSL certificate verification required
+2. Your URIs can perform basic HTTP Server functionalities. At the minimum, our platform expects a 200 response code from your URIs for every POST/GET request sent.
 
 ### Opt-in via SMS
 
@@ -118,15 +120,6 @@ receive secure, targeted text messages and alerts to your Globe / TM and other t
 
 Note: All API calls must include the access_token as one of the
 Universal Resource Identifier (URI) parameters.
-
-### Resources and URIs
-
-A RESTful API utilises HTTP commands POST, GET, PUT, and DELETE in order to
-perform an operation on a resource at the server. This resource is addressed by a URI;
-and what is returned by the server is a representation of that resource depending on its current state.
-
-HTTP POST and GET commonly used  in our services. The URIs of the resources are:
-
 
 ### Sending SMS (SMS-MT)
 
@@ -388,13 +381,7 @@ The Globe Labs LBS is a RESTful interface.
 
 __Note__: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
 
-Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8) .
-
-###Resources and URIs
-
-A RESTful API utilises HTTP commands GET in order to perform an operation on a resource at the server. This resource is addressed by a URI; and what is returned by the server is a representation of that resource depending on its current state.
-
-HTTP GET commnand is used in these resources below:
+Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8)
 
 ### LBS Query
 
