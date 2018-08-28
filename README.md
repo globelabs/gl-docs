@@ -585,58 +585,6 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 
 __Note__: Non 200 and 500 series will deduct 0.50 from your wallet balance
 
-Voice
-========================
-
-**Overview**
-
-Build nearly any voice application you can imagine, including speech-driven IVR, VoIP solutions and voice mashups with the Globe Labs Voice APIs (powered by Tropo).
-With the Globe Labs Voice APIs, one can easily:
-
-- Make a Call (Incoming and Outgoing) : Have your application dial a sip address or better yet an actual phone number. You can call even more than one number or sip address with just 2 lines of code.
-
-- Call Control : With the API you can transfer or route a call to another phone number or sip address, reject a call without even answering or even have other callers to join in for a conference call.
-
-- Speech Recognition: Not just the tone touch input. The API gives your caller the capability to talk back to your application, and by simply tell the API what are the expected words as the valid answer.
-
-- Recording : Going beyond speech recognition, the API has the capability to transcribe the caller's responses to text and you can easily save it to your database, or perhaps record their responses in part or whole as audio files.
-
-- and more…
-
-###### You can select between Scripting or Web API .
-
-### Scripting
-
-Scripting : A simple yet powerful synchronous API that lets you build communications applications, hosted on servers in our platform, using the languages you already know - JavaScript, PHP, Ruby, Python, and Groovy. Best to use for quick apps or short code snippets.
-
-You can even use Gist Github or Dropbox to use your code.
-
-Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
-
-Read the full documentation at:
-
-https://www.tropo.com/docs/scripting/quickstarts
-
-call trigger endpoint:
-
-GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
-
-### Web API
-
-Web API :  A web-service API that lets you build communications applications that run on your servers and drive the Tropo cloud using JSON over HTTP. It uses the same request-response model many web developers are already comfortable using, communicating with applications running on your own server, feeding requests and processing responses back and forth as needed. Requires to import or include code library.
-
-Best to use for apps that requires database and other system integration.
-
-Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
-
-Read the full documentation at:
-
-https://www.tropo.com/docs/webapi/quickstarts
-
-call trigger endpoint:
-
-GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
-
 USSD
 =====================
 
