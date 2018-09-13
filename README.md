@@ -559,6 +559,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |416 |Failure to check the subscriber's balance.|
 |503 | System is busy, please try again later.|
 |701 | Charging is disallowed for the subscriber. Do not retry. Inform the subscriber to call the hotline for activation.|
+|702 | System is busy. Please try again later and contact api@globe.com.ph|
 
 ### Get Last Reference Code
 In case you lost of track of your reference code,
