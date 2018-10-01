@@ -475,7 +475,7 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
     ```javascript
     https://developer.globelabs.com.ph/dialog/oauth/<APP ID>/?amount=<CHARGE AMOUNT>
     ```
-   NOTE: Amount must be in 2 decimal points format e.g 1.00, 2.00, 3.00
+   NOTE: Amount must be in decimal format e.g 1.00, 2.00, 3.00
    
 2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
 
@@ -491,7 +491,7 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
 
 1. Use <span class="method">POST</span> method on this URI:
 ```
-https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<APP SECRET>&subscriber_number=<SUBSCRIBER NUMBER>&duration=<PROMO DURATION IN HOURS>&amount=<CHARGE AMOUNT>
+https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<APP SECRET>&subscriber_number=<SUBSCRIBER NUMBER>&duration=<PROMO DURATION IN DAYS>&amount=<CHARGE AMOUNT>
 ```
 
 2.  Upon receipt of the **‘opt-in message’**, the subscriber needs to reply **YES**.
@@ -540,7 +540,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 | _string_ **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
 | _string_ **referenceCode** is a unique alphanumeric code for records matching. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Suffix of your shortcode (last 4 digits) + Unique combination of 7 alphanumeric string, but we recommend that you do Increments of 1 from 1000000 for faster tracking. e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 | _string_ **transactionOperationStatus** a mandatory parameter that should always be set to 'Charged'| Required |
-| _double_ **duration** this defines how long the subscriber will be subscribed to the promo. Must be in 2 decimal points format. | Required |
+| _double_ **duration** this defines how many days the subscriber will be subscribed to the promo. | Required |
 
 ###### Sample Response
 
