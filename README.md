@@ -33,18 +33,20 @@ In order to create an app, user must fill out a minimum of required fields which
   
   **SMS**
 
-  - Notify URI - Everytime your short code receives a message; this link will receive the data in JSON format.
+  - Notify URI - Everytime your short code receives a message, this link will receive the data in JSON format.
 
   **Voice**
 
   - Voice URI - Either in Scripting or WEB API; this contains your code/commands to be accessed.
 
-
-
-  **Note**: The Redirect URI must be on a publicly accessible domain or on a web server, for example; **http://www.example.com/your_code.php** .
-  The platforms expects a 200 response code from the developer's Redirect URI and Notify URI to be valid.
-
 After creation, your app will have its own **Short Code**.
+
+### Redirect and Notify URI
+
+The following are the minimum expectations for your app's Redirect and Notify URI:
+
+1. Your URIs must be either a publicly accessible domain or web server i.e. no SSL certificate verification required
+2. Your URIs can perform basic HTTP Server functionalities. At the minimum, our platform expects an HTTP Status Code 200 response from your URIs for every HTTP request sent.
 
 ### Opt-in via SMS
 
@@ -85,7 +87,7 @@ GET /?access_token=E1enKbxfLBUH7b_1E500G_V16fM-Yxmm1VHAR15Re9I&subscriber_number
 
 ```javascript
 http://www.sample-redirect-url.com/?code=bLfXLEL9CM8nReI78kxAI7ra56hrBzrBsyonbkIzepngUdrKKyC5Mp5ahgKLAzF9z76RfA4rjrsaAdqeCBkGrMF4MA6MfK6bkGsB89onSL9ER6sbr5yGCzMa8RfA7TzAbqKTa6EfaE5BzCK7ErMsMK9LpSnobejsxrALxfE9GkzFGEdEaCj6rLXsL578RfdyL9rFkbp49hXxK7pCejpAgUyXnj7Ij4zdbsLpar9hKzkA8IEdneMIpjE45CaXjE7f
-```
+```                                                                                                                                                                                                                                                                                                                                                            
 ###### Sample POST to get Access Token
 
 ```javascript
@@ -101,8 +103,7 @@ json format:
 ```javascript
 {
    "unsubscribed":{
-          "subscriber_number":"9171234567",
-          "access_token":"abcdefghijklmnopqrstuvwxyz",
+          "subscriber_number":"9171234567",                                                                                                      "access_token":"abcdefghijklmnopqrstuvwxyz",
           "time_stamp": "2014-10-19T12:00:00"
    }
 }
@@ -118,15 +119,6 @@ receive secure, targeted text messages and alerts to your Globe / TM and other t
 
 Note: All API calls must include the access_token as one of the
 Universal Resource Identifier (URI) parameters.
-
-### Resources and URIs
-
-A RESTful API utilises HTTP commands POST, GET, PUT, and DELETE in order to
-perform an operation on a resource at the server. This resource is addressed by a URI;
-and what is returned by the server is a representation of that resource depending on its current state.
-
-HTTP POST and GET commonly used  in our services. The URIs of the resources are:
-
 
 ### Sending SMS (SMS-MT)
 
@@ -389,13 +381,7 @@ The Globe Labs LBS is a RESTful interface.
 
 __Note__: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
 
-Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8) .
-
-###Resources and URIs
-
-A RESTful API utilises HTTP commands GET in order to perform an operation on a resource at the server. This resource is addressed by a URI; and what is returned by the server is a representation of that resource depending on its current state.
-
-HTTP GET commnand is used in these resources below:
+Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8)
 
 ### LBS Query
 
@@ -475,19 +461,57 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 
 API requests with a response code of 201, 400 or 401 will be chargeable against your developer wallet. Standard LBS API rates apply, unless otherwise stated.
 
-
 Charging
 ========================
 
 **Overview**
 
-The Charging API directly charges for digital services to the bill of an Globe or TM subscriber. A developer creates new transactions or subscriptions, requests the status of the transaction or subscription, and authorizes refunds.
+The Charging API allows developers to directly charge for digital services to the prepaid balance of a Globe or TM subscriber.
 
-NOTE: Charging post-paid subscribers are temporarily suspended. 
+NOTE: Charging for post-paid subscribers is temporarily suspended.
 
-######CHARGING v2.1
+### Charging Opt-in via Webform
 
-The API Payment interface allows you to charge mobile subscribers for use of your Web application or content. The API allows you to directly charge a user based on their consent (see ‘User consent and operator policies’ below).
+1.  Platform redirects your subscribers to this url:
+    ```javascript
+    https://developer.globelabs.com.ph/dialog/oauth/<APP ID>/?amount=<CHARGE AMOUNT>
+    ```
+   NOTE: Amount must be in decimal format e.g 1.00, 2.00, 3.00
+   
+2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
+
+3.  The page will be redirected, and an SMS with confirmation pin will be sent to the subscriber.
+
+4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
+
+5.  The page will then be redirected to the redirect_uri of your application, and **code** and **amount** parameters will be passed as a URL query parameter to it.
+
+6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+
+### Charging Opt-in via SMS
+
+1. Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<APP SECRET>&subscriber_number=<SUBSCRIBER NUMBER>&duration=<PROMO DURATION IN DAYS>&amount=<CHARGE AMOUNT>
+```
+
+2.  Upon receipt of the **‘opt-in message’**, the subscriber needs to reply **YES**.
+
+3.  After the subscriber replies (Yes), the **amount** and the **code** will be sent to your **Redirect URI** as URL parameters via the GET method.
+
+4. To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+
+
+###### Code as URL Parameter
+
+```javascript
+http://www.sample-redirect-url.com/?code=bLfXLEL9CM8nReI78kxAI7ra56hrBzrBsyonbkIzepngUdrKKyC5Mp5ahgKLAzF9z76RfA4rjrsaAdqeCBkGrMF4MA6MfK6bkGsB89onSL9ER6sbr5yGCzMa8RfA7TzAbqKTa6EfaE5BzCK7ErMsMK9LpSnobejsxrALxfE9GkzFGEdEaCj6rLXsL578RfdyL9rFkbp49hXxK7pCejpAgUyXnj7Ij4zdbsLpar9hKzkA8IEdneMIpjE45CaXjE7f&amount=0.00
+```
+###### Sample POST to get Access Token
+
+```javascript
+POST -x 'https://developer.globelabs.com.ph/oauth/access_token?app_id=<APP ID>&app_secret=<APP SECRET>&code=<CODE>'
+```
 
 ### Charge Subscriber
 
@@ -506,17 +530,18 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
  -F "endUserId=9171234567" \
  -F "referenceCode=12341000022" \
  -F "transactionOperationStatus=Charged"
+ -F "duration=0"
  ```
 
-###### Resource Parameters
-
+###### Request Parameters 
 | Parameter | Usage |
 | ----------|-------|
-|**amount** (string) amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
-|**description**(string) is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
-| **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
-| **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Suffix of your shortcode (last 4 digits) + Unique combination of 7 alphanumeric string, but we recommend that you do Increments of 1 from 1000000 for faster tracking. e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
-|**transactionOperationStatus** (string) a mandatory parameter that should always be set to 'Charged'| Required |
+| _string_ **amount** amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
+| _string_ **description** is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
+| _string_ **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
+| _string_ **referenceCode** is a unique alphanumeric code for records matching. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Suffix of your shortcode (last 4 digits) + Unique combination of 7 alphanumeric string, but we recommend that you do Increments of 1 from 1000000 for faster tracking. e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
+| _string_ **transactionOperationStatus** a mandatory parameter that should always be set to 'Charged'| Required |
+| _int_ **duration** this defines how many days the subscriber will be subscribed to the promo. | Required |
 
 ###### Sample Response
 
@@ -542,8 +567,6 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 }
 ```
 
-
-
 ###### Error Codes:
 
 |Code|Description|
@@ -568,11 +591,6 @@ you can make a <span class="method">GET</span> request to this uri below:
 ```
 https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 ```
-
-|Parameter|Usage|
-|---------|-----|
-|app_id|required|
-|app_secret|required|
 
 ###### Sample Response
 
