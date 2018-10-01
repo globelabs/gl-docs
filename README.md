@@ -541,7 +541,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 | _string_ **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
 | _string_ **referenceCode** is a unique alphanumeric code for records matching. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Suffix of your shortcode (last 4 digits) + Unique combination of 7 alphanumeric string, but we recommend that you do Increments of 1 from 1000000 for faster tracking. e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 | _string_ **transactionOperationStatus** a mandatory parameter that should always be set to 'Charged'| Required |
-| _int_ **duration** this defines how many days the subscriber will be subscribed to the promo. | Required |
+| _int_ **duration** this defines how many days the subscriber will be subscribed to the promo. | Optional |
 
 ###### Sample Response
 
