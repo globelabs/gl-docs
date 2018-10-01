@@ -133,7 +133,7 @@ https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/{senderAddress}/request
 
 ###### Representation Formats
 
-For the Globe Labs API SMS (beta), it is implemented
+For the Globe Labs API SMS, it is implemented
 using application/json.
 
 ###### Resource Parameters
@@ -201,7 +201,7 @@ curl -X POST
 | **resourceURL** Specifies the URI that provides network delivery status of the sent message. The API Endpoint. | Required |
 | **notifyURL** App call back URL defined at the App Info. | Optional |
 
-__Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS (beta) API. 
+__Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS API. 
 Error response with 400 series will deduct 0.50 from your wallet balance.
 
 ### Receiving SMS (SMS-MO)
@@ -233,55 +233,6 @@ In receiving SMS, globe will send a data(POST) to your Notify URL (that you prov
 
 In your Notify URL, create a script that will catch and save these data to a file or to the database.
 
-###Binary SMS
-
-Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
-
-Use <span class="method">POST</span> method on this URI:
-```
-https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}
-```
-#### Parameters
-
-Parameter | Description | Required
-----------|-------------|----------
-`userDataHeader` | UDH of the message | true
-`dataCodingScheme` | data coding of the message | true
-`address` | MSISDN of the recipient | true
-`outboundBinaryMessage.message` | message to be sent | true
-`senderAddress` | shortcode of the app | true
-`access_token` | access token of the subscriber | true
-
-Data Coding Value | Description
-------------------|------------
-0                 | SMSC Default
-1                 | IA5/ASCII
-3                 | Latin 1 (ISO-8859-1)
-4                 | Binary (8-bit)
-8                 | UCS2 (Unicode)
-
-```json
-{
-  "outboundBinaryMessageRequest": {
-    "address": "9171234567",
-    "deliveryInfoList": {
-      "deliveryInfo": [],
-      "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
-    "senderAddress": "21581234",
-    "userDataHeader": "06050423F423F4",
-    "dataCodingScheme": 1,
-    "outboundBinaryMessage": {
-      "message": "samplebinarymessage"
-    },
-    "receiptRequest": {
-      "notifyURL": "http://example.com/notify",
-      "callbackData": null,
-      "senderName": null
-    },
-  "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
-  }
-}
-```
 
 ###Multi-Part SMS
 
@@ -359,6 +310,56 @@ sample of expected format of multi-part content below:
 
 Batch of messages could be identified if they have the same `multipartRefId`.
 
+###Binary SMS
+
+Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
+
+Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}
+```
+#### Parameters
+
+Parameter | Description | Required
+----------|-------------|----------
+`userDataHeader` | UDH of the message | true
+`dataCodingScheme` | data coding of the message | true
+`address` | MSISDN of the recipient | true
+`outboundBinaryMessage.message` | message to be sent | true
+`senderAddress` | shortcode of the app | true
+`access_token` | access token of the subscriber | true
+
+Data Coding Value | Description
+------------------|------------
+0                 | SMSC Default
+1                 | IA5/ASCII
+3                 | Latin 1 (ISO-8859-1)
+4                 | Binary (8-bit)
+8                 | UCS2 (Unicode)
+
+```json
+{
+  "outboundBinaryMessageRequest": {
+    "address": "9171234567",
+    "deliveryInfoList": {
+      "deliveryInfo": [],
+      "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+    "senderAddress": "21581234",
+    "userDataHeader": "06050423F423F4",
+    "dataCodingScheme": 1,
+    "outboundBinaryMessage": {
+      "message": "samplebinarymessage"
+    },
+    "receiptRequest": {
+      "notifyURL": "http://example.com/notify",
+      "callbackData": null,
+      "senderName": null
+    },
+  "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+  }
+}
+```
+
 ###SMS API HTTP Response
 
 |Code|Description|
@@ -393,7 +394,7 @@ https://devapi.globelabs.com.ph/location/v1/queries/location?access_token={acces
 
 ###### Representation Formats
 
-For the Globe Labs API LBS (beta), it is implemented using application/json.
+For the Globe Labs API LBS, it is implemented using application/json.
 
 ###### Resource Parameters
 
@@ -580,8 +581,8 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |412 | TM Subscriber has insufficient balance.|
 |416 |Failure to check the subscriber's balance.|
 |503 | System is busy, please try again later.|
-|701 | Charging is disallowed for the subscriber. **DO NOT RETRY.** Inform the subscriber to call the hotline for activation.|
-|702 | System is busy, please try again later. Please try again later and contact api@globe.com.ph|
+|701 | Charging is disallowed for the subscriber. Do not retry. Inform the subscriber to call the hotline for activation.|
+|702 | System is busy. Please try again later and contact api@globe.com.ph|
 
 ### Get Last Reference Code
 In case you lost of track of your reference code,
@@ -602,58 +603,6 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 ```
 
 __Note__: Non 200 and 500 series will deduct 0.50 from your wallet balance
-
-Voice
-========================
-
-**Overview**
-
-Build nearly any voice application you can imagine, including speech-driven IVR, VoIP solutions and voice mashups with the Globe Labs Voice APIs (powered by Tropo).
-With the Globe Labs Voice APIs, one can easily:
-
-- Make a Call (Incoming and Outgoing) : Have your application dial a sip address or better yet an actual phone number. You can call even more than one number or sip address with just 2 lines of code.
-
-- Call Control : With the API you can transfer or route a call to another phone number or sip address, reject a call without even answering or even have other callers to join in for a conference call.
-
-- Speech Recognition: Not just the tone touch input. The API gives your caller the capability to talk back to your application, and by simply tell the API what are the expected words as the valid answer.
-
-- Recording : Going beyond speech recognition, the API has the capability to transcribe the caller's responses to text and you can easily save it to your database, or perhaps record their responses in part or whole as audio files.
-
-- and more…
-
-###### You can select between Scripting or Web API .
-
-### Scripting
-
-Scripting : A simple yet powerful synchronous API that lets you build communications applications, hosted on servers in our platform, using the languages you already know - JavaScript, PHP, Ruby, Python, and Groovy. Best to use for quick apps or short code snippets.
-
-You can even use Gist Github or Dropbox to use your code.
-
-Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
-
-Read the full documentation at:
-
-https://www.tropo.com/docs/scripting/quickstarts
-
-call trigger endpoint:
-
-GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
-
-### Web API
-
-Web API :  A web-service API that lets you build communications applications that run on your servers and drive the Tropo cloud using JSON over HTTP. It uses the same request-response model many web developers are already comfortable using, communicating with applications running on your own server, feeding requests and processing responses back and forth as needed. Requires to import or include code library.
-
-Best to use for apps that requires database and other system integration.
-
-Upon successfully creating an app you will get following information: Voice App ID, Voice App Token
-
-Read the full documentation at:
-
-https://www.tropo.com/docs/webapi/quickstarts
-
-call trigger endpoint:
-
-GET https://api-new.tropo.globelabs.com.ph/1.0/sessions?action=create&token=<VOICE_TOKEN>
 
 USSD
 =====================
