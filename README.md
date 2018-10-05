@@ -484,7 +484,7 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
 
 4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
 
-5.  The page will then be redirected to the redirect_uri of your application, and **code** and **amount** parameters will be passed as a URL query parameter to it.
+5.  The page will then be redirected to the **Redirect URI** of your application. The **code** and **amount** parameters will be sent to your **Notify URI**.
 
 6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
 
@@ -497,7 +497,7 @@ https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<
 
 2.  Upon receipt of the **‘opt-in message’**, the subscriber needs to reply **YES**.
 
-3.  After the subscriber replies (Yes), the **amount** and the **code** will be sent to your **Redirect URI** as URL parameters via the GET method.
+3.  After the subscriber replies (Yes), the **amount** and the **code** will be sent to your **Notify URI** as URL parameters via the GET method.
 
 4. To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
 
