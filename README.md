@@ -11,7 +11,7 @@ To get the access token, the subscribers need to grant the developer app in eith
 
 ### Create An App
 
-After successful registration and login, create an app at http://www.globelabs.com.ph/apps/new or by clicking the **Create App** button.  
+After successful registration and login, create an app at http://developer.globelabs.com.ph/apps/new or by clicking the **Create App** button.  
 
 In order to create an app, user must fill out a minimum of required fields which are the following:
 
