@@ -433,7 +433,6 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
     }
   }
 }
-201
 ```
 
 ###### Response Parameters
@@ -480,9 +479,9 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
    
 2.  The page will ask to key-in the subscriber’s mobile number and subscriber clicks the Grant button.
 
-3.  The page will be redirected, and an SMS with confirmation pin will be sent to the subscriber.
+3.  The page will be redirected and an SMS with confirmation PIN will be sent to the subscriber.
 
-4.  The subscriber needs to key-in on the page the received confirmation pin and click the button Confirm to authorize the subscriber.
+4.  The subscriber needs to enter the received confirmation PIN and click the Confirm button to authorize the transaction.
 
 5.  The page will then be redirected to the **Redirect URI** of your application. The **code** and **amount** parameters will be sent to your **Notify URI**.
 
@@ -494,10 +493,16 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
 ```
 https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<APP SECRET>&subscriber_number=<SUBSCRIBER NUMBER>&duration=<PROMO DURATION IN DAYS>&amount=<CHARGE AMOUNT>
 ```
+Alternatively, the subscriber can receive an **opt-in message** by sending **INFO** to the shortcode.
 
-2.  Upon receipt of the **‘opt-in message’**, the subscriber needs to reply **YES**.
+2.  Upon receipt of the **opt-in message**, the subscriber needs to reply **YES *keyword*** (e.g. YES GLABS1). 
+Special keywords are defined and provisioned for each application.
+ 
+If the opt-in is developer-triggered, the keyword is provided in the **opt-in message** based on the **amount** parameter.
 
-3.  After the subscriber replies (Yes), the **amount** and the **code** will be sent to your **Notify URI** as URL parameters via the GET method.
+If the subscriber sends **INFO**, a list of available keywords with equivalent amounts are provided in the **opt-in message**
+
+3.  After the subscriber replies, the **amount** and the **code** will be sent to your **Notify URI** as URL parameters via the GET method.
 
 4. To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
 
