@@ -495,7 +495,9 @@ https://devapi.globelabs.com.ph/payment/v1/smsoptin?app_id=<APP ID>&app_secret=<
 ```
 Alternatively, the subscriber can receive an **opt-in message** by sending **INFO** to the shortcode.
 
-2.  Upon receipt of the **opt-in message**, the subscriber needs to reply **YES *keyword*** (e.g. YES GLABS1).  Special keywords are defined and provisioned for each application.  If the opt-in is developer-triggered, the keyword is provided in the **opt-in message** based on the **amount** parameter.  If the subscriber sends **INFO**, a list of available keywords with equivalent amounts are provided in the **opt-in message**
+2.  Upon receipt of the **opt-in message**, the subscriber needs to reply **YES *keyword*** (e.g. YES GLABS1). Special keywords are defined and provisioned for each application.
+  * If the opt-in is developer-triggered, the keyword is provided in the **opt-in message** based on the **amount** parameter.
+  * If the subscriber sends **INFO**, a list of available keywords with equivalent amounts are provided in the **opt-in message**
 
 3.  After the subscriber replies, the **amount** and the **code** will be sent to your **Notify URI** as URL parameters via the GET method.
 
