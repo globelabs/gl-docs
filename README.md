@@ -467,7 +467,7 @@ Charging
 
 The Charging API allows developers to directly charge for digital services to the prepaid balance of a Globe or TM subscriber.
 
-NOTE: Charging for post-paid subscribers is temporarily suspended.
+__Note__: The Charging API is not readily available upon app creation. To avail, please email your app's use case and company name to api@globe.com.ph
 
 ### Charging Opt-in via Webform
 
@@ -485,7 +485,7 @@ NOTE: Charging for post-paid subscribers is temporarily suspended.
 
 5.  The page will then be redirected to the **Redirect URI** of your application. The **code** and **amount** parameters will be sent to your **Notify URI**.
 
-6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+6.  To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned as a response.
 
 ### Charging Opt-in via SMS
 
@@ -504,7 +504,7 @@ If the subscriber sends **INFO**, a list of available keywords with equivalent a
 
 3.  After the subscriber replies, the **amount** and the **code** will be sent to your **Notify URI** as URL parameters via the GET method.
 
-4. To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned to your **Redirect URI** as a response.
+4. To get the access token, you need to do a POST request via https://developer.globelabs.com.ph/oauth/access_token with your ‘**app_id**’, ‘**app_secret**’ and ‘**code**’ as URL query parameters. The parameters ‘**access_token**’ and ‘**subscriber_number**’ will then be returned as a response.
 
 
 ###### Code as URL Parameter
@@ -609,12 +609,113 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
 
 __Note__: Non 200 and 500 series will deduct 0.50 from your wallet balance
 
+
+Load
+========================
+
+**Overview**
+
+The Load API enables your application to send prepaid load, postpaid credits or call, text and surfing promos to your subscribers.
+
+__Note__: The Load API is not readily available upon app creation. To avail, please email your app's use case and company name to api@globe.com.ph
+
+### Sending Load
+
+Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/rewards/v1/transactions/send
+```
+###### Representation Format
+
+For the Globe Labs Load API, the expected format is ```application/json```
+
+###### Sample POST Request
+
+```
+curl -X POST
+"https://devapi.globelabs.com.ph/rewards/v1/transactions/send" -H "Content-Type: application/json" -d
+{
+    "outboundRewardRequest" : {
+        "app_id" : "B54z9Ug55zLh5rTGRT5g6hq64pGUq6ap",
+        "app_secret" : "f6554137d08f5607a696cd40741993758c411af3bb5f6c230270ec26e8d54126",
+        "rewards_token" : "I7SkxKYid_F_p-JSgTejow",
+        "address" : "9271051129",
+        "promo" : "LOAD 50"
+    }
+}
+```
+###### Request Body or Payload Parameters
+
+| Parameter | Usage |
+| ----------|-------------|
+| _string_ **app_id** This is the unique identifier of your app | Required |
+| _string_ **app_secret** This is the security code of your app | Required |
+| _string_ **rewards_token** This is used as a key to allow your app to send rewards | Required |
+| _string_ **address** This is the subscriber MSISDN (mobile number), including the ‘tel:’ identifier. Parameter format can include the ‘+’ followed by country code  09xxxxxxxxx or 9xxxxxxxxx | Required |
+| _string_ **promo** This is the promo to be sent | Required |
+
+###### Sample Successful POST Response
+
+```json
+{
+  "outboundRewardRequest": {
+    "transaction_id": 1805759,
+    "status": "Please check your Rewards Callback URI for status",
+    "address": "9271051129",
+    "promo": "LOAD 50",
+    "timestamp": "Wed, Jun 06 2018 03:19:11 GMT+0000 (UTC)"
+  }
+}
+```
+| Parameter | Usage |
+| ----------|-------------|
+| _int_ **transaction_id** This is the unique identifier of the transaction | |
+| _string_ **status** This is the status of the transaction. Please note that the actual status is sent to your Callback URI | |
+| _string_ **address** This is the subscriber MSISDN (mobile number), including the ‘tel:’ identifier. Parameter format can include the ‘+’ followed by country code  09xxxxxxxxx or 9xxxxxxxxx | |
+| _string_ **promo** This is the promo code to be sent | |
+| _datetime_ **timestamp** This is the time the transaction was made | |
+
+###### Sample Callback
+
+The Load API Callback is sent via POST request to your Callback URI.
+
+```json
+{
+  "outboundRewardRequest": {
+    "status": "SUCCESS",
+    "promo": "LOAD 50",
+    "timestamp": "Wed, Jun 06 2018 03:19:11 GMT+0000 (UTC)"
+    "transaction_id": 1805759,
+    "address": "9271051129"
+  }
+}
+```
+
+### Error Codes
+
+| Status Code | Error Message |
+|-------------|---------------|
+| 200 | N/A |
+| 401 | Invalid App Secret |
+| 401 | App is not provisioned for Rewards |
+| 401 | Invalid Rewards Token |
+| 401 | App is not provisioned for this promo |
+| 403 | Insufficient Wallet Balance |
+| 403 | Your account is currently blocked. Please contact api@globe.com.ph for reactivation |
+| 403 | The subscriber is blacklisted |
+| 404 | App not found |
+| 404 | Invalid promo |
+| 500 | Something went wrong. Please try again in a while |
+
+
 USSD
 =====================
 
 **Overview**
 
 The USSD API allows users to access your products or services free of charge by accessing the dial menu through a dedicated number.
+
+__Note__: The USSD API is not readily available upon app creation. To avail, please email your app's use case and company name to api@globe.com.ph
 
 ### Sending Network Initiated USSD Message (USSD-NI)
 
